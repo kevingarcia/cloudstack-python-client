@@ -9,11 +9,12 @@ Credentials
 
 Create a file named ".cloudstack" within your users HOME DIR with the following:
 
+```
 [cloud]
 api = 
 apikey = 
 secret = 
-
+```
 
 
 Examples
