@@ -4,6 +4,18 @@ CloudStack Python Client
 Python client library for the CloudStack User API v3.0.0. For older versions,
 see the [tags](https://github.com/jasonhancock/cloudstack-python-client/tags).
 
+Credentials
+-----------
+
+Create a file named ".cloudstack" within your users HOME DIR with the following:
+
+[cloud]
+api = 
+apikey = 
+secret = 
+
+
+
 Examples
 --------
 
@@ -14,11 +26,7 @@ List all virtual machines
 
 import CloudStack
 
-api = 'http://example.com:8080/client/api'
-apikey = 'API KEY'
-secret = 'API SECRET'
-
-cloudstack = CloudStack.Client(api, apikey, secret)
+cloudstack = CloudStack.Client()
 
 vms = cloudstack.listVirtualMachines()
 
@@ -35,11 +43,8 @@ Asynchronous tasks
 
 import CloudStack
 
-api = 'http://example.com:8080/client/api'
-apikey = 'API KEY'
-secret = 'API SECRET'
 
-cloudstack = CloudStack.Client(api, apikey, secret)
+cloudstack = CloudStack.Client()
 
 job = cloudstack.deployVirtualMachine({
     'serviceofferingid': '2',

@@ -5,12 +5,20 @@ import hmac
 import base64
 import hashlib
 import re
+import ConfigParser
+import os
+
+env = os.getenv("HOME")
+config_file = env + '/.cloudstack'
+config = ConfigParser.ConfigParser()
+config.read(config_file)
 
 class BaseClient(object):
-    def __init__(self, api, apikey, secret):
-        self.api = api
-        self.apikey = apikey
-        self.secret = secret
+    def __init__(self):
+
+        self.api = config.get("cloud", "api")
+        self.apikey = config.get("cloud", "apikey")
+        self.secret = config.get("cloud", "secret")
 
     def request(self, command, args):
         args['apikey']   = self.apikey
