@@ -42,7 +42,21 @@ class BaseClient(object):
 
         query += '&signature=' + urllib.quote_plus(signature)
 
-        response = urllib2.urlopen(self.api + '?' + query)
+        response = ''
+
+        try:
+            global response
+            response = urllib2.urlopen(self.api + '?' + query)
+        except urllib2.HTTPError, e:
+            print e.readline()
+            exit()
+        except urllib2.URLError, e:
+            print e.readline()
+            exit()
+        except httplib.HTTPException, e:
+            print e.readline()
+            exit()
+
         decoded = json.loads(response.read())
        
         propertyResponse = command.lower() + 'response'
