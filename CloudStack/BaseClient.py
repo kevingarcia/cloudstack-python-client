@@ -8,7 +8,7 @@ import re
 import ConfigParser
 import os
 
-env = os.getenv("HOME")
+env = os.environ["HOME"]
 config_file = env + '/.cloudstack'
 config = ConfigParser.ConfigParser()
 config.read(config_file)
